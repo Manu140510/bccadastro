@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-position: center;
             background-image: url(cd.png);
             background-size: cover;
             background-position: center;
@@ -30,12 +29,11 @@
 
             box-shadow:
             0 0 15px rgb(255, 255, 255),
-            0 0 30px rgba(255, 255, 255, 0.5); /*Borda 3D brilhante*/
+            0 0 30px rgba(255, 255, 255, 0.5);
 
             color: white;
             
             font-family: Arial, Helvetica, sans-serif;
-            
         }
 
         button{
@@ -60,7 +58,7 @@
         }
 
         a:active{
-            color: rgb(0, 0, 0); /* muda a cor ao clicar*/
+            color: rgb(0, 0, 0);
         }
 
         .inputun{
@@ -98,7 +96,6 @@
             text-align: center;
         }
 
-
     </style>
 </head>
 <body>
@@ -106,24 +103,59 @@
     <div class="Cadastro">
 
         <h2>Tela de Cadastro</h2>
+
         <p>
             <label for="name">Nome</label>
             <input class="inputun" type="text" id="name" placeholder="Username"><br>
         </p>
 
         <p>
-        <label for="email">Email</label>
-        <input class="inputdois" type="email" id="email" placeholder="Email"><br>
+            <label for="email">Email</label>
+            <input class="inputdois" type="email" id="email" placeholder="Email"><br>
         </p>
 
         <p>
-        <label for="senha">Senha</label>
-        <input class="inputtres" type="password" id="senha" placeholder="Senha"><br>
+            <label for="senha">Senha</label>
+            <input class="inputtres" type="password" id="senha" placeholder="Senha"><br>
         </p>
 
         <p>
-            <button class="buttondois" type="submit">Cadastrar</button>
+            <button type="button" onclick="cadastrar()">
+                Cadastrar
+            </button>
         </p>
+
     </div>
+
+<script>
+
+function cadastrar(){
+
+    let nome = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+
+    // VERIFICA SE OS CAMPOS ESTÃO VAZIOS
+    if(nome === "" || email === "" || senha === ""){
+
+        alert("Preencha todos os campos!");
+        return;
+
+    }
+
+    // SALVAR DADOS
+    localStorage.setItem("nome", nome);
+    localStorage.setItem("email", email);
+    localStorage.setItem("senha", senha);
+
+    alert("Cadastro realizado com sucesso!");
+
+    // REDIRECIONAR PARA LOGIN
+    window.location.href = "https://manu140510.github.io/bnlogin/";
+
+}
+
+</script>
+
 </body>
 </html>
