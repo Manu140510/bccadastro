@@ -3,155 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Tela de login</title>
 
     <style>
 
-        body{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url(cd.png);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url(img.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
 
-        .Cadastro{
-            background-color: rgba(255, 255, 255, 0.699);
-            padding: 20px;
-            width: 200px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+      .login{
+        background-color: rgba(93, 0, 155, 0.699);
+        padding: 20px;
+        width: 200px;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
 
-            border: 2px solid rgba(255, 255, 255, 0.541);
+        border: 2px solid rgba(255, 255, 255, 0.541);
 
-            box-shadow:
-            0 0 15px rgb(255, 255, 255),
-            0 0 30px rgba(255, 255, 255, 0.5);
+        box-shadow:
+         0 0 15px rgb(255, 255, 255),
+         0 0 30px rgba(255, 255, 255, 0.5);
 
-            color: white;
-            
-            font-family: Arial, Helvetica, sans-serif;
-        }
+        color: white;
+        
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+      }
 
-        button{
-            display: block;
-            margin: 10px auto;
-            background-color: rgb(93, 0, 155);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
+      .inputdois{
+        border-radius: 10px;
+        padding: 4px;
+        padding-left: 35px;
+        background-image: url(email.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: 10px center;
+      }
 
-        button:hover {
-            background-color: rgb(255, 255, 255);
-            color: rgb(0, 0, 0);
-        }
+      .inputtres{
+        border-radius: 10px;
+        padding: 4px;
+        padding-left: 35px;
+        background-image: url(password.png);
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: 10px center;
+      }
 
-        a{
-            color: white;
-        }
+      ::placeholder{
+        color: black;
+      }
 
-        a:active{
-            color: rgb(0, 0, 0);
-        }
+      button{
+        border-radius: 10px;
+        padding: 5px;
+        cursor: pointer;
+      }
 
-        .inputun{
-            border-radius: 10px;
-            padding: 4px;
-            background-image: url(username.png);
-            background-repeat: no-repeat;
-            background-size: 20px;
-            background-position: 10px center;
-        }
+      a{
+        color: white;
+      }
 
-        .inputdois{
-            border-radius: 10px;
-            padding: 4px;
-            background-image: url(email.png);
-            background-repeat: no-repeat;
-            background-size: 20px;
-            background-position: 10px center;
-        }
-
-        .inputtres{
-            border-radius: 10px;
-            padding: 4px;
-            background-image: url(password.png);
-            background-repeat: no-repeat;
-            background-size: 20px;
-            background-position: 10px center;
-        }
-
-        ::placeholder{
-            padding-left: 30px;
-        }
-
-        h2{
-            text-align: center;
-        }
+      a:active{
+        color: rgb(0, 0, 0);
+      }
 
     </style>
+
 </head>
 <body>
-
-    <div class="Cadastro">
-
-        <h2>Tela de Cadastro</h2>
+    
+      <div class="login"> 
+          
+        <h2>Tela de Login</h2>
 
         <p>
-            <label for="name">Nome</label>
-            <input class="inputun" type="text" id="name" placeholder="Username"><br>
+        <label for="login">Login</label><br>
+          <input class="inputdois" type="email" id="login" placeholder="Digite seu email">
         </p>
 
         <p>
-            <label for="email">Email</label>
-            <input class="inputdois" type="email" id="email" placeholder="Email"><br>
+        <label for="senha">Senha</label><br>
+          <input class="inputtres" type="password" id="senha" placeholder="Digite sua senha">
         </p>
 
         <p>
-            <label for="senha">Senha</label>
-            <input class="inputtres" type="password" id="senha" placeholder="Senha"><br>
+          <label>
+            <input type="checkbox">
+            Lembrar da senha
+          </label>
         </p>
 
         <p>
-            <button type="button" onclick="cadastrar()">
-                Cadastrar
-            </button>
+          <button type="button" onclick="entrar()">
+            Entrar
+          </button>
         </p>
 
-    </div>
+        <a href="https://manu140510.github.io/bccadastro/">
+          Cadastrar
+        </a>
+
+      </div> 
 
 <script>
 
-function cadastrar(){
+/* LOGIN */
 
-    let nome = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
+function entrar(){
+
+    let email = document.getElementById("login").value;
     let senha = document.getElementById("senha").value;
 
-    // VERIFICA SE OS CAMPOS ESTÃO VAZIOS
-    if(nome === "" || email === "" || senha === ""){
+    /* PEGAR DADOS SALVOS */
 
-        alert("Preencha todos os campos!");
-        return;
+    let emailSalvo = localStorage.getItem("email");
+    let senhaSalva = localStorage.getItem("senha");
+
+    /* VERIFICAR */
+
+    if(email === emailSalvo && senha === senhaSalva){
+
+        alert("Login realizado com sucesso!");
+
+        /* REDIRECIONAR */
+
+        window.location.href = "https://manu140510.github.io/bnconta/";
+
+    } else {
+
+        alert("Email ou senha incorretos!");
 
     }
-
-    // SALVAR DADOS
-    localStorage.setItem("nome", nome);
-    localStorage.setItem("email", email);
-    localStorage.setItem("senha", senha);
-
-    alert("Cadastro realizado com sucesso!");
-
-    // REDIRECIONAR PARA LOGIN
-    window.location.href = "https://manu140510.github.io/bnlogin/";
 
 }
 
